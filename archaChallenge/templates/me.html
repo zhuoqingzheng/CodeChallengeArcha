@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h3>{{currentuser.name}}</h3>
+        <div></div>
+        <p>user type: {{currentuser.level}}</p>
+        <div></div>
+        <p>cards: </p>
+        <ul>
+            {% for card in currentuser.cards %}
+            <li>{{ card }}</li>
+            {% endfor %}
+        </ul>
+
+        <div></div>
+        <h3> other users: </h3>
+        <div></div>
+        <div></div>
+        <ul>
+            {% for otheruser in otherusers %}
+            <li>{{ otheruser.name }}</li>
+            <div></div>
+            <p>user type: {{otheruser.level}}</p>
+            <div></div>
+            <p>cards: </p>
+            <ul>
+                {% for card in otheruser.cards %}
+                <li>{{ card }}</li>
+                {% endfor %}
+            </ul>
+
+            <div></div>
+            {% endfor %}
+        </ul>
+
+
+    </body>
+</html>

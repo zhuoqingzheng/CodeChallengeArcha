@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <ul>
+        {% for card in cards %}
+            <li> <p>{{card.cardNum}}</p>
+                 <p>{{card.expDate}}</p>
+                 <p>{{card.maskedNum}}</p>
+                 {% if level == "admin" %}
+                    <form action="changeLimit/?cardNum1={{card.cardNum}}" method = "post">
+                        {% csrf_token %}
+                        <label for="Limit">Limit: </label>
+                        <input id="Limit" type="number" name = "Limit" step="0.01" value = {{card.limit}}> 
+                        <input type = "submit" value="Submit"> 
+                    </form>
+
+                 {% else %}
+                <p>{{card.limit}}</p>
+                {% endif %}
+                <p>{{card.currentBalance}}</p>
+            </li>
+            
+        {% endfor %}
+    </ul>
+</html>
