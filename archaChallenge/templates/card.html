@@ -6,15 +6,15 @@
                 <p>{{card.holder.name}}</p>
                  <p>{{card.expDate}}</p>
                  <p>{{card.maskedNum}}</p>
+                <!-- condition check -->
                  {% if user.level == "admin" and card.holder.company == user.company %}
-
                     <form action="changeLimit/?cardNum1={{card.cardNum}}" method = "post">
                         {% csrf_token %}
                         <label for="Limit">Limit: </label>
                         <input id="Limit" type="number" name = "Limit" step="0.01" value = {{card.limit}}> 
                         <input type = "submit" value="Submit"> 
                     </form>
-
+                
                  {% else %}
                 <p>{{card.limit}}</p>
                 {% endif %}
