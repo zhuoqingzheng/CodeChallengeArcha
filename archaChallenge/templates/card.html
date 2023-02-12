@@ -3,9 +3,11 @@
     <ul>
         {% for card in cards %}
             <li> <p>{{card.cardNum}}</p>
+                <p>{{card.holder.name}}</p>
                  <p>{{card.expDate}}</p>
                  <p>{{card.maskedNum}}</p>
-                 {% if level == "admin" %}
+                 {% if user.level == "admin" and card.holder.company == user.company %}
+
                     <form action="changeLimit/?cardNum1={{card.cardNum}}" method = "post">
                         {% csrf_token %}
                         <label for="Limit">Limit: </label>
